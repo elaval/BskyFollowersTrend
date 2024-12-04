@@ -26,7 +26,20 @@ jobs:
       - name: Run Jupyter Notebook
         env:
           BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
-          ELMTEST: ${{secrets.ELMTEST}}
+          ELMTEST: ${{ secrets.ELMTEST }}
         run: |
           jupyter nbconvert --to script track_followers_count.ipynb
           python track_followers_count.py
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and Push Changes
+        run: |
+          git add .
+          git commit -m "Update followers data [skip ci]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
