@@ -27,5 +27,5 @@ jobs:
         env:
           BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
         run: |
-          jupyter nbconvert --to script followers_tracker.ipynb
-          python followers_tracker.py
+          jupyter nbconvert --to script track_followers_count.ipynb
+          python track_followers_count.py
