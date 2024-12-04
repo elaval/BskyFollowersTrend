@@ -26,6 +26,7 @@ jobs:
       - name: Run Jupyter Notebook
         env:
           BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+          ELMTEST: ${{secrets.ELMTEST}}
         run: |
           jupyter nbconvert --to script track_followers_count.ipynb
           python track_followers_count.py
