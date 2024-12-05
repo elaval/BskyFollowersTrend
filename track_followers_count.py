@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[19]:
+# In[20]:
 
 
 import os
@@ -63,6 +63,7 @@ def fetch_profile(client, handle):
             "description": profile.description or "",
             "followers_count": profile.followers_count or 0,
             "created_at": profile.created_at,
+            "avatar_url": profile.avatar or "",
             "timestamp": datetime.now(),
         }
         print(f"Fetched profile: {record}")
@@ -97,6 +98,7 @@ def update_master_file(profile, master_data):
         "description": profile["description"],
         "followers_count": profile["followers_count"],
         "created_at": profile.get("created_at", ""),
+        "avatar_url": profile["avatar_url"],
         "timestamp": profile["timestamp"],
     }])
     master_data = master_data[master_data["handle"] != profile["handle"]]
